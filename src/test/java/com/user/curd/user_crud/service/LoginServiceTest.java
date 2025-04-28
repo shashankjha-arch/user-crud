@@ -43,15 +43,10 @@ class LoginServiceTest {
     @MockitoBean
     private UserDetailsRepository userDetailsRepository;
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest)")
     void testSignUp() {
-        // Arrange
         when(userDetailsRepository.findByEmail(Mockito.<String>any()))
                 .thenThrow(new IllegalArgumentException("U.U.U@U.U.U.UUUU"));
 
@@ -71,15 +66,7 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("shashank@gmail.com"));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code jane.doe@example.org}.</li>
-     *   <li>When {@link SignUpRequest} (default constructor) Email is {@code jane.doe@example.org}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'jane.doe@example.org'; when SignUpRequest (default constructor) Email is 'jane.doe@example.org'")
     void testSignUp_givenJaneDoeExampleOrg_whenSignUpRequestEmailIsJaneDoeExampleOrg() {
@@ -113,15 +100,7 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("shashank@gmail.com"));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code john.smith@example.org}.</li>
-     *   <li>When {@link SignUpRequest} (default constructor) Email is {@code john.smith@example.org}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'john.smith@example.org'; when SignUpRequest (default constructor) Email is 'john.smith@example.org'")
     void testSignUp_givenJohnSmithExampleOrg_whenSignUpRequestEmailIsJohnSmithExampleOrg() {
@@ -155,15 +134,6 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("shashank@gmail.com"));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code null}.</li>
-     *   <li>When {@link SignUpRequest} (default constructor) Email is {@code null}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'null'; when SignUpRequest (default constructor) Email is 'null'")
     void testSignUp_givenNull_whenSignUpRequestEmailIsNull() {
@@ -183,14 +153,7 @@ class LoginServiceTest {
         assertThrows(IllegalArgumentException.class, () -> loginService.signUp(signUpRequest));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code prof.einstein@example.org}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'prof.einstein@example.org'")
     void testSignUp_givenProfEinsteinExampleOrg() {
@@ -224,15 +187,7 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("prof.einstein@example.org"));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code Sign Up Request}.</li>
-     *   <li>When {@link SignUpRequest} (default constructor) Email is {@code Sign Up Request}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'Sign Up Request'; when SignUpRequest (default constructor) Email is 'Sign Up Request'")
     void testSignUp_givenSignUpRequest_whenSignUpRequestEmailIsSignUpRequest() {
@@ -252,15 +207,7 @@ class LoginServiceTest {
         assertThrows(IllegalArgumentException.class, () -> loginService.signUp(signUpRequest));
     }
 
-    /**
-     * Test {@link LoginService#signUp(SignUpRequest)}.
-     * <ul>
-     *   <li>Given {@code U.U.U@U.U.U.UUUU}.</li>
-     *   <li>When {@link SignUpRequest} (default constructor) Email is {@code U.U.U@U.U.U.UUUU}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signUp(SignUpRequest)}
-     */
+
     @Test
     @DisplayName("Test signUp(SignUpRequest); given 'U.U.U@U.U.U.UUUU'; when SignUpRequest (default constructor) Email is 'U.U.U@U.U.U.UUUU'")
     void testSignUp_givenUUUUUUUuuu_whenSignUpRequestEmailIsUUUUUUUuuu() {
@@ -294,15 +241,6 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("U.U.U@U.U.U.UUUU"));
     }
 
-    /**
-     * Test {@link LoginService#signin(LoginRequest)}.
-     * <ul>
-     *   <li>Given {@link UserDetailsEntity} {@link UserDetailsEntity#getPassword()} return {@code foo}.</li>
-     *   <li>Then return {@code false}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signin(LoginRequest)}
-     */
     @Test
     @DisplayName("Test signin(LoginRequest); given UserDetailsEntity getPassword() return 'foo'; then return 'false'")
     void testSignin_givenUserDetailsEntityGetPasswordReturnFoo_thenReturnFalse() {
@@ -352,14 +290,7 @@ class LoginServiceTest {
         assertFalse(actualSigninResult);
     }
 
-    /**
-     * Test {@link LoginService#signin(LoginRequest)}.
-     * <ul>
-     *   <li>Then return {@code true}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#signin(LoginRequest)}
-     */
+
     @Test
     @DisplayName("Test signin(LoginRequest); then return 'true'")
     void testSignin_thenReturnTrue() {
@@ -384,14 +315,7 @@ class LoginServiceTest {
         assertTrue(actualSigninResult);
     }
 
-    /**
-     * Test {@link LoginService#changePassword(LoginRequest)}.
-     * <ul>
-     *   <li>Given {@link UserDetailsRepository} {@link CrudRepository#save(Object)} return {@link UserDetailsEntity} (default constructor).</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#changePassword(LoginRequest)}
-     */
+
     @Test
     @DisplayName("Test changePassword(LoginRequest); given UserDetailsRepository save(Object) return UserDetailsEntity (default constructor)")
     void testChangePassword_givenUserDetailsRepositorySaveReturnUserDetailsEntity() {
@@ -423,14 +347,7 @@ class LoginServiceTest {
         verify(userDetailsRepository).save(isA(UserDetailsEntity.class));
     }
 
-    /**
-     * Test {@link LoginService#changePassword(LoginRequest)}.
-     * <ul>
-     *   <li>Then throw {@link IllegalArgumentException}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#changePassword(LoginRequest)}
-     */
+
     @Test
     @DisplayName("Test changePassword(LoginRequest); then throw IllegalArgumentException")
     void testChangePassword_thenThrowIllegalArgumentException() {
@@ -454,14 +371,6 @@ class LoginServiceTest {
         verify(userDetailsRepository).save(isA(UserDetailsEntity.class));
     }
 
-    /**
-     * Test {@link LoginService#deleteUser(LoginRequest)}.
-     * <ul>
-     *   <li>Given {@link UserDetailsRepository} {@link CrudRepository#delete(Object)} does nothing.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#deleteUser(LoginRequest)}
-     */
     @Test
     @DisplayName("Test deleteUser(LoginRequest); given UserDetailsRepository delete(Object) does nothing")
     void testDeleteUser_givenUserDetailsRepositoryDeleteDoesNothing() {
@@ -486,15 +395,7 @@ class LoginServiceTest {
         verify(userDetailsRepository).findByEmail(eq("shashank@gmail.com"));
         verify(userDetailsRepository).delete(isA(UserDetailsEntity.class));
     }
-
-    /**
-     * Test {@link LoginService#deleteUser(LoginRequest)}.
-     * <ul>
-     *   <li>Then throw {@link IllegalArgumentException}.</li>
-     * </ul>
-     * <p>
-     * Method under test: {@link LoginService#deleteUser(LoginRequest)}
-     */
+    
     @Test
     @DisplayName("Test deleteUser(LoginRequest); then throw IllegalArgumentException")
     void testDeleteUser_thenThrowIllegalArgumentException() {
